@@ -1,12 +1,13 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { DashboardScreen } from './src/screens/DashboardScreen';
 import { CalendarScreen } from './src/screens/CalendarScreen';
+import { WellnessScreen } from './src/screens/WellnessScreen';
 import { SettingsScreen } from './src/screens/SettingsScreen';
 import { ScheduleEditorScreen } from './src/screens/ScheduleEditorScreen';
 import { EditProfileScreen } from './src/screens/EditProfileScreen';
@@ -35,6 +36,7 @@ function TabNavigator() {
     >
       <Tab.Screen name="Dashboard" component={DashboardScreen} />
       <Tab.Screen name="Calendar" component={CalendarScreen} />
+      <Tab.Screen name="Wellness" component={WellnessScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );
@@ -42,12 +44,22 @@ function TabNavigator() {
 
 export default function App() {
   const isDarkMode = useThemeStore((state) => state.isDarkMode);
+  const colors = useThemeColors();
+
+  const navigationTheme = isDarkMode ? DarkTheme : DefaultTheme;
+  const customTheme = {
+    ...navigationTheme,
+    colors: {
+      ...navigationTheme.colors,
+      background: colors.Background,
+    },
+  };
 
   return (
     <SafeAreaProvider>
       <StatusBar style={isDarkMode ? "light" : "dark"} />
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <NavigationContainer theme={customTheme}>
+        <Stack.Navigator screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.Background } }}>
           <Stack.Screen name="MainTabs" component={TabNavigator} />
           <Stack.Screen 
             name="ScheduleEditor" 

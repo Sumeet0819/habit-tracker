@@ -8,6 +8,7 @@ import { useThemeColors } from '../theme/colors';
 const TabIcons: Record<string, { active: string; inactive: string; label: string }> = {
   Dashboard: { active: 'layout-grid-fill', inactive: 'layout-grid-line', label: 'Overview' },
   Calendar: { active: 'calendar-event-fill', inactive: 'calendar-event-line', label: 'Calendar' },
+  Wellness: { active: 'heart-pulse-fill', inactive: 'heart-pulse-line', label: 'Wellness' },
   Settings: { active: 'settings-4-fill', inactive: 'settings-4-line', label: 'Settings' },
 };
 

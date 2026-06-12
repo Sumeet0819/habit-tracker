@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "expo-temp",
-    "slug": "expo-temp",
+    "name": "Ditto",
+    "slug": "ditto",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.sumitra-123.expotemp"
+      "bundleIdentifier": "com.ditto.app"
     },
     "android": {
       "adaptiveIcon": {
@@ -18,14 +18,31 @@
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.sumitra_123.expotemp"
+      "package": "com.ditto.app",
+      "permissions": [
+        "ACTIVITY_RECOGNITION",
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "expo-sqlite",
-      "@react-native-community/datetimepicker"
+      "@react-native-community/datetimepicker",
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow the app to use your location for weather updates."
+        }
+      ],
+      [
+        "expo-sensors",
+        {
+          "motionPermission": "Allow the app to track your daily steps."
+        }
+      ]
     ]
   }
 }

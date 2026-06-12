@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
+import Svg, { Circle } from 'react-native-svg';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useTaskStore } from '../store/useTaskStore';
@@ -166,6 +167,24 @@ export const DashboardScreen = ({ navigation }: any) => {
         </View>
         
         <View style={styles.progressContainer}>
+          <Svg width="60" height="60" viewBox="0 0 60 60" style={{ position: 'absolute' }}>
+            <Circle 
+              cx="30" cy="30" r="26" 
+              stroke={colors.SurfaceVariant} 
+              strokeWidth="4" 
+              fill="transparent" 
+            />
+            <Circle 
+              cx="30" cy="30" r="26" 
+              stroke={colors.CardOrange} 
+              strokeWidth="4" 
+              fill="transparent" 
+              strokeDasharray={2 * Math.PI * 26}
+              strokeDashoffset={2 * Math.PI * 26 * (1 - analytics.percentage / 100)}
+              strokeLinecap="round"
+              transform="rotate(-90 30 30)"
+            />
+          </Svg>
           <Text style={styles.progressText}>{analytics.percentage}%</Text>
         </View>
       </View>
