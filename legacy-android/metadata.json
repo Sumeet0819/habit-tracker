@@ -1,0 +1,6 @@
+{
+  "name": "Habit Scheduler",
+  "description": "7-Week Habit Scheduler App",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
